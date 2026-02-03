@@ -95,6 +95,86 @@
     commentsList.innerHTML += newComment;
 
   });
+
+  const comments = [
+    {
+      name: "Глеб Фокин",
+      date: "12.02.22 12:18",
+      text: "Это будет первый комментарий на этой странице",
+      likesCount: 3,
+      isLiked: false,
+    },
+    {
+      name: "Варвара Н.",
+      date: "13.02.22 19:22",
+      text: "Мне нравится как оформлена эта страница! ❤",
+      likesCount: 75,
+      isLiked: true,
+    },
+  ];
+
+ const renderComments = () => {
+    const commentsHtml = comments.map((comment, index) => {
+      return `<li class="comment">
+        <div class="comment-header">
+          <div>${comment.name}</div>
+          <div>${comment.date}</div>
+        </div>
+        <div class="comment-body">
+          <div class="comment-text">${comment.text}</div>
+        </div>
+        <div class="comment-footer">
+          <div class="likes">
+            <span class="likes-counter">${comment.likesCount}</span>
+            <button class="like-button ${comment.isLiked ? '-active-like' : ''}" data-index="${index}"></button>
+          </div>
+        </div>
+      </li>`;
+    }).join("");
+
+  const initLikeButtons = () => {
+    const likeButtons = document.querySelectorAll(".like-button");
+
+    for (const likeButton of likeButtons) {
+      likeButton.addEventListener("click", () => {
+        const index = likeButton.dataset.index;
+        const comment = comments[index];
+
+        if (comment.isLiked) {
+          comment.likesCount -= 1;
+          comment.isLiked = false;
+        } else {
+          comment.likesCount += 1;
+          comment.isLiked = true;
+        }
+        renderComments(); 
+      });
+    }
+  };
+   
+
+    commentsList.innerHTML = commentsHtml;
+    initLikeButtons(); 
+  };
+  addButton.addEventListener("click", () => {
+    if (nameInput.value === "" || commentInput.value === "") return;
+
+    const now = new Date();
+    const dateTime = now.toLocaleString().slice(0, -3);
+
+    comments.push({
+      name: nameInput.value,
+      date: dateTime,
+      text: commentInput.value,
+      likesCount: 0,
+      isLiked: false,
+    });
+
+    nameInput.value = "";
+    commentInput.value = "";
+    
+    renderComments();
+  });
 </script>
   </script>
 </html>
