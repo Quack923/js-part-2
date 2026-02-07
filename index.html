@@ -152,12 +152,16 @@
     }
   };
    
+  
 
     commentsList.innerHTML = commentsHtml;
     initLikeButtons(); 
   };
-  addButton.addEventListener("click", () => {
-    if (nameInput.value === "" || commentInput.value === "") return;
+   addButton.addEventListener("click", () => {
+    if (nameInput.value.trim() === "" || commentInput.value.trim() === "") {
+      alert("Ошибка,Вы не ввели данные! ");
+      return; 
+    }
 
     const now = new Date();
     const dateTime = now.toLocaleString().slice(0, -3);
@@ -172,7 +176,7 @@
 
     nameInput.value = "";
     commentInput.value = "";
-    
+
     renderComments();
   });
    renderComments();
