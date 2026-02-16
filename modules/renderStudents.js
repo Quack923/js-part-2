@@ -1,0 +1,29 @@
+import {comments} from "./arrComments.js";
+import { clearHtml } from "./sanitaze.js";
+import {initEventListeners} from "./eventList.js";
+import { commentsList } from "../index.js";
+ export const renderComments = () => {
+    const commentsHtml = comments.map((comment, index) => {
+      return `<li class="comment">
+        <div class="comment-header">
+          <div>${clearHtml(comment.name)}</div>
+          <div>${comment.date}</div>
+        </div>
+        <div class="comment-body">
+          <div class="comment-text" style="white-space: pre-line;">
+            ${clearHtml(comment.text)}
+          </div>
+        </div>
+        <div class="comment-footer">
+          <button class="reply-button" data-index="${index}">Ответить</button>
+          <div class="likes">
+            <span class="likes-counter">${comment.likesCount}</span>
+            <button class="like-button ${comment.isLiked ? '-active-like' : ''}" data-index="${index}"></button>
+          </div>
+        </div>
+      </li>`;
+    }).join("");
+
+    commentsList.innerHTML = commentsHtml;
+    initEventListeners(renderComments);
+  };
