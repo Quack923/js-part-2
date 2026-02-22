@@ -3,14 +3,21 @@
       name: "Глеб Фокин",
       date: "12.02.22 12:18",
       text: "Это будет первый комментарий на этой странице",
-      likesCount: 3,
+      likes: 3,
       isLiked: false,
     },
     {
       name: "Варвара Н.",
       date: "13.02.22 19:22",
       text: "Мне нравится как оформлена эта страница! ❤",
-      likesCount: 75,
+      likes: 75,
       isLiked: true,
     },
   ];
+
+   export const updateComment = (newComments) => {
+    comments.length = 0; 
+
+    comments.push(...newComments); 
+};
+  

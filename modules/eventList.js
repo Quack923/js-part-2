@@ -11,10 +11,10 @@ export const initEventListeners = (renderFunction) => {
 
            
             if (comment.isLiked) {
-                comment.likesCount -= 1;
+                comment.likes -= 1;
                 comment.isLiked = false;
             } else {
-                comment.likesCount += 1;
+                comment.likes += 1;
                 comment.isLiked = true;
             }
 

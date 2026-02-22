@@ -17,7 +17,7 @@ import { commentsList } from "../index.js";
         <div class="comment-footer">
           <button class="reply-button" data-index="${index}">Ответить</button>
           <div class="likes">
-            <span class="likes-counter">${comment.likesCount}</span>
+            <span class="likes-counter">${comment.likes}</span>
             <button class="like-button ${comment.isLiked ? '-active-like' : ''}" data-index="${index}"></button>
           </div>
         </div>
