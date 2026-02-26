@@ -63,38 +63,5 @@
     </div>
   </body>
 
-  <script>
-  const nameInput = document.querySelector(".add-form-name");
-  const commentInput = document.querySelector(".add-form-text"); 
-  const addButton = document.querySelector(".add-form-button");
-  const commentsList = document.querySelector(".comments"); 
-
-  addButton.addEventListener("click", () => {
-    const now = new Date();
-    const dateTime = now.toLocaleString().slice(0, -3);
-
-    const newComment = `
-      <li class="comment">
-        <div class="comment-header">
-          <div>${nameInput.value}</div>
-          <div>${dateTime}</div>
-        </div>
-        <div class="comment-body">
-          <div class="comment-text">
-            ${commentInput.value}
-          </div>
-        </div>
-        <div class="comment-footer">
-          <div class="likes">
-            <span class="likes-counter">0</span>
-            <button class="like-button"></button>
-          </div>
-        </div>
-      </li>`;
-
-    commentsList.innerHTML += newComment;
-
-  });
-</script>
-  </script>
+  <script type="module" src="index.js"></script>
 </html>
